@@ -7,3 +7,6 @@
 http://www.nbugs.com
 
 http://open.xiaoyuanhao.com
+
+
+当前SDK参照senparc项目基础上修改实现
