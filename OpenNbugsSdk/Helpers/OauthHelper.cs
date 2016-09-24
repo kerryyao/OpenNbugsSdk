@@ -17,7 +17,7 @@ namespace ONS.Helpers
         public static string GetPreAuthCodeUrl(string redirect_url)
         {
             //https://open.xiaoyuanhao.com/cgi-bin/oauth2/user/authorize?client_id=CLIENT_ID&response_type=code&redirect_uri=REDIRECT_URL
-            return string.Format(@"{0}/cgi-bin/oauth2/user/authorize?client_id={1}&response_type=code&redirect_uri={2}", Config.URL_OPENBUGS, Config.ClientId, redirect_url.UrlEncode());
+            return string.Format(@"{0}/oauth2/user/authorize?client_id={1}&response_type=code&redirect_uri={2}", Config.URL_OPENBUGS, Config.ClientId, redirect_url.UrlEncode());
         }
 
         /// <summary>
