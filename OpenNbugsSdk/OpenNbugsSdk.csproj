@@ -37,7 +37,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,11 +47,15 @@
   <ItemGroup>
     <Compile Include="CommonAPIs\CommonJsonSend.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Entities\GetTokenResult.cs" />
+    <Compile Include="Entities\GetTokenWithUserinfoResult.cs" />
     <Compile Include="Entities\RetResult.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Exceptions\OnsException.cs" />
     <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\OauthHelper.cs" />
+    <Compile Include="Oauth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\EntityUtility\EntityUtility.cs" />
     <Compile Include="Utilities\HttpUtility\Get.cs" />
@@ -60,15 +63,10 @@
     <Compile Include="Utilities\HttpUtility\RequestUtility.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Cache\" />
     <Folder Include="Containers\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="AdvancedAPIs\readme.txt" />
-    <Content Include="OAuthAPIs\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

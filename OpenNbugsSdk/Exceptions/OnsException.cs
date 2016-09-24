@@ -5,10 +5,10 @@ namespace ONS.Exceptions
 {
     public class OnsException: ApplicationException
     {
-        public RetResult Result { get; set; }
+        public RetResult<object> Result { get; set; }
 
         public string Url { get; set; }
-        public OnsException(string message, Exception inner, RetResult result, string url = null)
+        public OnsException(string message, Exception inner, RetResult<object> result, string url = null)
             : base(message, inner)
         {
             Result = result;

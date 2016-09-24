@@ -29,9 +29,9 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 using ONS.Entities;
 using ONS.Exceptions;
+using Newtonsoft.Json;
 
 namespace ONS.Utilities.HttpUtility
 {
@@ -45,12 +45,10 @@ namespace ONS.Utilities.HttpUtility
         /// <returns></returns>
         public static T GetResult<T>(string returnText)
         {
-            JavaScriptSerializer js = new JavaScriptSerializer();
-
-            if (returnText.Contains("errcode"))
+            if (returnText.Contains("code"))
             {
                 //可能发生错误
-                RetResult errorResult = js.Deserialize<RetResult>(returnText);
+                var errorResult =JsonConvert.DeserializeObject<RetResult<object>>(returnText);
                 if (errorResult.code != ReturnCode.接口返回正常)
                 {
                     //发生错误
@@ -61,9 +59,8 @@ namespace ONS.Utilities.HttpUtility
                         null, errorResult);
                 }
             }
-
-            T result = js.Deserialize<T>(returnText);
-            return result;
+            
+            return JsonConvert.DeserializeObject<T>(returnText);
         }
 
 

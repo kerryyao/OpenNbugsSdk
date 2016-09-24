@@ -14,14 +14,13 @@
     修改描述：v4.5.19 为GetJson方法添加maxJsonLength参数
 ----------------------------------------------------------------*/
 
-using System;
 using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 using ONS.Entities;
 using ONS.Exceptions;
+using Newtonsoft.Json;
 
 namespace ONS.Utilities.HttpUtility
 {
@@ -44,30 +43,20 @@ namespace ONS.Utilities.HttpUtility
         {
             string returnText = RequestUtility.HttpGet(url, encoding);
 
-            //WeixinTrace.SendLog(url, returnText);
-
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            if (maxJsonLength.HasValue)
-            {
-                js.MaxJsonLength = maxJsonLength.Value;
-            }
-
-            if (returnText.Contains("errcode"))
+            if (returnText.Contains("code"))
             {
                 //可能发生错误
-                RetResult errorResult = js.Deserialize<RetResult>(returnText);
+                var errorResult = JsonConvert.DeserializeObject<RetResult<object>>(returnText);
                 if (errorResult.code != ReturnCode.接口返回正常)
                 {
                     //发生错误
                     throw new OnsException(
-                        string.Format("微信请求发生错误！错误代码：{0}，说明：{1}",
+                        string.Format("请求发生错误！错误代码：{0}，说明：{1}",
                                         (int)errorResult.code, errorResult.msg), null, errorResult, url);
                 }
             }
 
-            T result = js.Deserialize<T>(returnText);
-
-            return result;
+            return JsonConvert.DeserializeObject<T>(returnText);
         }
 
         /// <summary>
@@ -105,28 +94,21 @@ namespace ONS.Utilities.HttpUtility
         {
             string returnText = await RequestUtility.HttpGetAsync(url, encoding);
 
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            if (maxJsonLength.HasValue)
-            {
-                js.MaxJsonLength = maxJsonLength.Value;
-            }
 
-            if (returnText.Contains("errcode"))
+            if (returnText.Contains("code"))
             {
                 //可能发生错误
-                RetResult errorResult = js.Deserialize<RetResult>(returnText);
+                var errorResult = JsonConvert.DeserializeObject<RetResult<object>>(returnText);
                 if (errorResult.code != ReturnCode.接口返回正常)
                 {
                     //发生错误
                     throw new OnsException(
-                        string.Format("微信请求发生错误！错误代码：{0}，说明：{1}",
+                        string.Format("请求发生错误！错误代码：{0}，说明：{1}",
                                         (int)errorResult.code, errorResult.msg), null, errorResult, url);
                 }
             }
 
-            T result = js.Deserialize<T>(returnText);
-
-            return result;
+            return JsonConvert.DeserializeObject<T>(returnText);
         }
 
         /// <summary>
