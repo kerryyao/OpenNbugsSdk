@@ -47,9 +47,12 @@
   <ItemGroup>
     <Compile Include="CommonAPIs\CommonJsonSend.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Entities\Card.cs" />
+    <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\GetTokenResult.cs" />
-    <Compile Include="Entities\GetTokenWithUserinfoResult.cs" />
+    <Compile Include="Entities\Userinfo.cs" />
     <Compile Include="Entities\RetResult.cs" />
+    <Compile Include="Entities\UserRole.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Exceptions\OnsException.cs" />
     <Compile Include="Helpers\DateTimeHelper.cs" />
