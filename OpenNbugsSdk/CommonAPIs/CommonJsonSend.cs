@@ -54,7 +54,7 @@ namespace ONS.CommonAPIs
             catch (OnsException ex)
             {
                 ex.Url = urlFormat;
-                throw;
+                throw ex;
             }
         }
 
