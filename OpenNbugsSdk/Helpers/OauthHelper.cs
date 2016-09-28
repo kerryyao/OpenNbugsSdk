@@ -27,6 +27,7 @@ namespace ONS.Helpers
         /// <param name="clientsecret"></param>
         public static string GetTokenUrl(string clientid, string clientsecret)
         {
+            
             //https://open.xiaoyuanhao.com/cgi-bin/oauth2/token?grant_type=client_credentials&client_id=CLIENT_ID&client_secret=CLIENT_SECRET 
             return string.Format(@"{0}/oauth2/token?grant_type=client_credentials&client_id={1}&client_secret={2}", Config.URL_OPENBUGS, clientid, clientsecret);
         }
@@ -46,3 +47,4 @@ namespace ONS.Helpers
         }
     }
 }
+ 
