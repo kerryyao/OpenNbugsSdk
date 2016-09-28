@@ -42,20 +42,6 @@ namespace ONS.Utilities.HttpUtility
         public static T GetJson<T>(string url, Encoding encoding = null, int? maxJsonLength = null)
         {
             string returnText = RequestUtility.HttpGet(url, encoding);
-
-            if (returnText.Contains("code"))
-            {
-                //可能发生错误
-                var errorResult = JsonConvert.DeserializeObject<RetResult<object>>(returnText);
-                if (errorResult.code != ReturnCode.接口返回正常)
-                {
-                    //发生错误
-                    throw new OnsException(
-                        string.Format("请求发生错误！错误代码：{0}，说明：{1}",
-                                        (int)errorResult.code, errorResult.msg), null, errorResult, url);
-                }
-            }
-
             return JsonConvert.DeserializeObject<T>(returnText);
         }
 
@@ -93,21 +79,6 @@ namespace ONS.Utilities.HttpUtility
         public static async Task<T> GetJsonAsync<T>(string url, Encoding encoding = null, int? maxJsonLength = null)
         {
             string returnText = await RequestUtility.HttpGetAsync(url, encoding);
-
-
-            if (returnText.Contains("code"))
-            {
-                //可能发生错误
-                var errorResult = JsonConvert.DeserializeObject<RetResult<object>>(returnText);
-                if (errorResult.code != ReturnCode.接口返回正常)
-                {
-                    //发生错误
-                    throw new OnsException(
-                        string.Format("请求发生错误！错误代码：{0}，说明：{1}",
-                                        (int)errorResult.code, errorResult.msg), null, errorResult, url);
-                }
-            }
-
             return JsonConvert.DeserializeObject<T>(returnText);
         }
 

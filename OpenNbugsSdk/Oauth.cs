@@ -11,21 +11,26 @@ namespace ONS
         /// 应用授权
         /// </summary>
         /// <returns></returns>
-        public static GetTokenResult GetToken(int timeOut = 10000)
+        public static TokenResult GetToken(int timeOut = 10000)
         {
             var url = OauthHelper.GetTokenUrl(Config.ClientId, Config.ClientSecret);
-            return CommonJsonSend.Send<GetTokenResult>(null, url, null, CommonJsonSendType.GET, timeOut);       //应用授权同时支持GET和POST
+            return CommonJsonSend.Send<TokenResult>(null, url, null, CommonJsonSendType.GET, timeOut);       //应用授权同时支持GET和POST
         }
 
         /// <summary>
         /// suguo.yao 2016-9-4
-        /// 获取当前授权登录的用户信息及用户accesstoken
+        /// 获取当前授权登录的用户accesstoken
         /// </summary>
         /// <returns></returns>
-        public static RetResult<Userinfo> GetTokenWithUserinfo(string code)
+        public static TokenResult GetToken(string code, bool writememory = false, int timeOut = 10000)
         {
             var url = OauthHelper.GetAccessTokenUrl(Config.ClientId, Config.ClientSecret, code);
-            return CommonJsonSend.Send<RetResult<Userinfo>>(null, url, null, CommonJsonSendType.GET);
+            var ret = CommonJsonSend.Send<TokenResult>(null, url, null, CommonJsonSendType.GET, timeOut);
+            if (!string.IsNullOrEmpty(ret.access_token) && !writememory)
+            {
+                //写入memory
+            }
+            return ret;
         }
     }
 }

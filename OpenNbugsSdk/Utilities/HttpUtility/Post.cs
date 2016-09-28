@@ -44,22 +44,7 @@ namespace ONS.Utilities.HttpUtility
         /// <param name="returnText"></param>
         /// <returns></returns>
         public static T GetResult<T>(string returnText)
-        {
-            if (returnText.Contains("code"))
-            {
-                //可能发生错误
-                var errorResult =JsonConvert.DeserializeObject<RetResult<object>>(returnText);
-                if (errorResult.code != ReturnCode.接口返回正常)
-                {
-                    //发生错误
-                    throw new OnsException(
-                        string.Format("Post请求发生错误！错误代码：{0}，说明：{1}",
-                                      (int)errorResult.code,
-                                      errorResult.msg),
-                        null, errorResult);
-                }
-            }
-            
+        {      
             return JsonConvert.DeserializeObject<T>(returnText);
         }
 

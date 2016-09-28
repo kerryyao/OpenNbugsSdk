@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ONS.Entities
 {
     public class RetResult<T>
     {
-        public ReturnCode code { get; set; }
+        public string error { get; set; }
 
-        public string msg { get; set; }
+        public string error_description { get; set; }
 
         public T r { get; set; }
 
-        public T rs { get; set; }
+        public List<T> rs { get; set; }
     }
 }
