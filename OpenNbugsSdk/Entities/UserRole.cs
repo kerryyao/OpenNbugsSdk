@@ -2,10 +2,10 @@
 {
     public class UserRole
     {
-        public string deptId { get; set; }
-        public string userRole { get; set; }
-        public string userRoleRemark { get; set; }
+        public string userType { get; set; }
+        public string classId { get; set; }
+        public string className { get; set; }
         public string userId { get; set; }
-        public string orgId { get; set; }
+        public string userName { get; set; }
     }
 }

@@ -16,10 +16,11 @@ namespace ONS.Entities
         public string passtype { get; set; }
         public string logintype { get; set; }
         public string sex { get; set; }
-        public List<string> roles { get; set; }
+        public string roles { get; set; }
+        public User user { get; set; }
         public List<Card> cards { get; set; }
-        public List<string> details { get; set; }
-        public Contact logincontack { get; set; }
+        public List<UserRole> allrole { get; set; }
+        public LoginContack logincontack { get; set; }
 
     }
 }
