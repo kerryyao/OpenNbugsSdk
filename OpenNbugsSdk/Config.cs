@@ -1,4 +1,6 @@
-﻿namespace ONS
+﻿using System.Collections.Generic;
+
+namespace ONS
 {
     /// <summary>
     /// 全局配置类
@@ -10,5 +12,9 @@
 
         public static string ClientId { get; set; }
         public static string ClientSecret { get; set; }
+
+        public static string guid { get; set; }
+
+     
     }
 }

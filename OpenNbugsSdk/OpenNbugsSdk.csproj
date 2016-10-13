@@ -49,9 +49,11 @@
     <Compile Include="CommonAPIs\CommonJsonSend.cs" />
     <Compile Include="CommonAPIs\Two-wayAuthentication.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Entities\BaseUser.cs" />
     <Compile Include="Entities\Card.cs" />
     <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\GetTokenResult.cs" />
+    <Compile Include="Entities\LoginUser.cs" />
     <Compile Include="Entities\Userinfo.cs" />
     <Compile Include="Entities\RetResult.cs" />
     <Compile Include="Entities\UserRole.cs" />
