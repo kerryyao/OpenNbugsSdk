@@ -1,11 +1,14 @@
 ﻿using ONS.CommonAPIs;
 using ONS.Entities;
 using ONS.Helpers;
+using System;
+using System.Collections.Generic;
 
 namespace ONS
 {
     public static class Oauth
     {
+        public static Dictionary<string, string> token { get; set; }
         /// <summary>
         /// suguo.yao 2016-9-24
         /// 应用授权
@@ -22,10 +25,18 @@ namespace ONS
         /// 获取当前授权登录的用户信息及用户accesstoken
         /// </summary>
         /// <returns></returns>
-        public static RetResult<Userinfo> GetTokenWithUserinfo(string code)
+        public static RetResult<BaseUser<Userinfo>> GetTokenWithUserinfo(string code)
         {
             var url = OauthHelper.GetAccessTokenUrl(Config.ClientId, Config.ClientSecret, code);
-            return CommonJsonSend.Send<RetResult<Userinfo>>(null, url, null, CommonJsonSendType.GET);
+            var result = CommonJsonSend.Send<RetResult<BaseUser<Userinfo>>>(null, url, null, CommonJsonSendType.GET);
+            Config.guid = Guid.NewGuid().ToString();
+
+            if (result.r != null)
+            {
+                token = new Dictionary<string, string>();
+                token.Add(Config.guid,result.r.oauthToken);
+            }
+            return result;
         }
     }
 }
