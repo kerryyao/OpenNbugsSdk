@@ -1,10 +1,15 @@
 ﻿using ONS.Entities;
 using ONS.Utilities.HttpUtility;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ONS.APIs
 {
-    public class user
+    /// <summary>
+    /// 用户信息获取
+    /// 2016-10-13 junde.dong
+    /// </summary>
+    public class UserServices
     {
         /// <summary>
         /// 获取单个用户信息
@@ -125,10 +130,26 @@ namespace ONS.APIs
             return result;
         }
 
-
+        /// <summary>
+        /// 获取组织机构内的所有人员信息
+        /// </summary>
+        /// <param name="orgid">	用户所在组织机构ID</param>
+        /// <param name="usertype">	返回的人员类别，如：教师或学生</param>
+        /// <param name="page">	当前页面，大于0的整数</param>
+        /// <param name="pagesize">	每页返回的记录数，默认为50</param>
+        /// <param name="oauth_token">	应用授权获得的token</param>
+        /// <param name="with_contacts">	结果是否需要包含联系方式，默认：false</param>
+        /// <param name="with_orgext">	结果是否需要包含机构定义的扩展信息，默认：false</param>
+        /// <param name="with_card">	结果是否需要包含卡号信息，默认：false</param>
+        /// <param name="with_roledetail">	结果是否需要包含角色详细信息，默认：false</param>
+        /// <returns></returns>
         public List<Userinfo> getUserinfobyOrg(string orgid, string usertype, string page, string pagesize, string oauth_token, string with_contacts, string with_orgext, string with_card, string with_roledetail)
         {
             List<Userinfo> result = null;
+            if(!string.IsNullOrEmpty(usertype))
+            {
+                usertype = Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(usertype));
+            }
             string url = Config.URL_OPENBUGS + "/orguser/all?orgid=" + orgid + "&usertype=" + usertype + "&page=" + page + "&pagesize=" + pagesize + "&oauth_token=" + Oauth.token[Config.guid] + "&with_contacts=" + with_contacts + "&with_orgext=" + with_orgext + "&with_card=" + with_card + "&with_roledetail=" + with_roledetail;
             var temp = Get.GetJson<RetResult<RetResult<List<Userinfo>>>>(url);
             result = temp.r.rs;
