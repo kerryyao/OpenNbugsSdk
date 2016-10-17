@@ -45,7 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APIs\user.cs" />
+    <Compile Include="APIs\OrgServices.cs" />
+    <Compile Include="APIs\UserServices.cs" />
     <Compile Include="CommonAPIs\CommonJsonSend.cs" />
     <Compile Include="CommonAPIs\Two-wayAuthentication.cs" />
     <Compile Include="Config.cs" />
@@ -54,6 +55,8 @@
     <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\GetTokenResult.cs" />
     <Compile Include="Entities\LoginUser.cs" />
+    <Compile Include="Entities\Organize.cs" />
+    <Compile Include="Entities\SubDepts.cs" />
     <Compile Include="Entities\Userinfo.cs" />
     <Compile Include="Entities\RetResult.cs" />
     <Compile Include="Entities\UserRole.cs" />
