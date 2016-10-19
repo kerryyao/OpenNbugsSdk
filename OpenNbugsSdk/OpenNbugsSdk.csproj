@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIs\OrgServices.cs" />
+    <Compile Include="APIs\SmsServices.cs" />
     <Compile Include="APIs\UserServices.cs" />
     <Compile Include="CommonAPIs\CommonJsonSend.cs" />
     <Compile Include="CommonAPIs\Two-wayAuthentication.cs" />
