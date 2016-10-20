@@ -55,7 +55,8 @@
     <Compile Include="oauthTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="orgTest.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="userTest.cs" />
+    <Compile Include="smsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenNbugsSdk\OpenNbugsSdk.csproj">

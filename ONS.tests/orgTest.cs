@@ -13,7 +13,7 @@ namespace ONS.tests
         {
             Oauth.token = new System.Collections.Generic.Dictionary<string, string>();
             Config.guid= Guid.NewGuid().ToString();
-            Oauth.token.Add(Config.guid, "xyhappb323bbe11c2c439abac7a1e13e7ffb7f1476322701091");
+            Oauth.token.Add(Config.guid, "xyhappd71ef9f4a64e4430afda6282a34ef0831476929099033");
             org.Orginfo("330108-S000001", "330108-S000001-Y0003-20150002");
         }
 
@@ -22,14 +22,14 @@ namespace ONS.tests
         {
             Oauth.token = new System.Collections.Generic.Dictionary<string, string>();
             Config.guid = Guid.NewGuid().ToString();
-            Oauth.token.Add(Config.guid, "xyhapp73151fc74761463f941fc8bfa5a5c6d31476672106447");
+            Oauth.token.Add(Config.guid, "xyhappd71ef9f4a64e4430afda6282a34ef0831476929099033");
             org.OrginfoList("330108-S000001", "330108-S000001-Y0003-20150002");
         }
 
         [TestMethod]
         public void TestMethod3()
         {
-            Oauth.token = new System.Collections.Generic.Dictionary<string, string>();
+                Oauth.token = new System.Collections.Generic.Dictionary<string, string>();
             Config.guid = Guid.NewGuid().ToString();
             Oauth.token.Add(Config.guid, "xyhapp73151fc74761463f941fc8bfa5a5c6d31476672106447");
             org.OrgSubmit("330108-S000001", "330108-S000001-Y0003-20150002", "", "true");
@@ -40,7 +40,7 @@ namespace ONS.tests
         {
             Oauth.token = new System.Collections.Generic.Dictionary<string, string>();
             Config.guid = Guid.NewGuid().ToString();
-            Oauth.token.Add(Config.guid, "xyhapp73151fc74761463f941fc8bfa5a5c6d31476672106447");
+            Oauth.token.Add(Config.guid, "xyhappd71ef9f4a64e4430afda6282a34ef0831476929099033");
             org.OrgTree("330108-S000001");
         }
 
@@ -50,7 +50,7 @@ namespace ONS.tests
 
             Oauth.token = new System.Collections.Generic.Dictionary<string, string>();
             Config.guid = Guid.NewGuid().ToString();
-            Oauth.token.Add(Config.guid, "xyhapp73151fc74761463f941fc8bfa5a5c6d31476672106447");
+            Oauth.token.Add(Config.guid, "xyhappd71ef9f4a64e4430afda6282a34ef0831476929099033");
             org.orgext("330108-S000001","");
         }
 
@@ -59,7 +59,7 @@ namespace ONS.tests
         {
             Oauth.token = new System.Collections.Generic.Dictionary<string, string>();
             Config.guid = Guid.NewGuid().ToString();
-            Oauth.token.Add(Config.guid, "xyhappd7fb4906021243588741f3d2029f15811476769543183");
+            Oauth.token.Add(Config.guid, "xyhappd71ef9f4a64e4430afda6282a34ef0831476929099033");
             org.orgcfg("330108-S000001");
         }
     }

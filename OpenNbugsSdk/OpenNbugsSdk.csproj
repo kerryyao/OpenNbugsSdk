@@ -56,7 +56,9 @@
     <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\GetTokenResult.cs" />
     <Compile Include="Entities\LoginUser.cs" />
+    <Compile Include="Entities\MsgParameter.cs" />
     <Compile Include="Entities\Organize.cs" />
+    <Compile Include="Entities\Picture.cs" />
     <Compile Include="Entities\SubDepts.cs" />
     <Compile Include="Entities\Userinfo.cs" />
     <Compile Include="Entities\RetResult.cs" />

@@ -8,7 +8,7 @@ namespace ONS.APIs
     {
 
         /// <summary>
-        /// 获取单个机构（部门）信息
+        /// 获取单个机构（部门）信息获取一条信息，可查上级机构id和所属组织id
         /// </summary>
         /// <param name="orgid">用户所在组织机构ID</param>
         /// <param name="deptid">部门ID</param>
@@ -39,7 +39,7 @@ namespace ONS.APIs
             return result;
         }
         /// <summary>
-        /// 获取机构内下级部门信息
+        /// 获取机构内下级部门信息,返回List，批量获取上级机构和所属组织的id和类型
         /// </summary>
         /// <param name="orgid">	用户所在组织机构ID</param>
         /// <param name="parentid">	父部门ID，返回该部门的下一级部门列表</param>
@@ -57,7 +57,7 @@ namespace ONS.APIs
         }
 
         /// <summary>
-        /// 获取组织机构树
+        /// 获取组织机构树，返回一个学校的机构的机构树以list返回
         /// </summary>
         /// <param name="orgid">	组织机构ID</param>
         /// <param name="oauth_toeken">	应用授权获得的token</param>
@@ -87,6 +87,11 @@ namespace ONS.APIs
             return result;
         }
 
+        /// <summary>
+        /// 获取机构配置信息,list返回，返回名称和key
+        /// </summary>
+        /// <param name="orgid">组织机构ID</param>
+        /// <returns></returns>
         public List<object> orgcfg(string orgid)
         {
             List<object> result = null;

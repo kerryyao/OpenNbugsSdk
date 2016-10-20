@@ -5,7 +5,7 @@ using ONS.APIs;
 namespace ONS.tests
 {
     [TestClass]
-    public class UnitTest1
+    public class userTest
     {
         UserServices user = new UserServices();
         [TestMethod]
@@ -14,7 +14,7 @@ namespace ONS.tests
          
             Oauth.token = new System.Collections.Generic.Dictionary<string, string>();
             Config.guid = Guid.NewGuid().ToString();
-            Oauth.token.Add(Config.guid, "xyhapp73151fc74761463f941fc8bfa5a5c6d31476672106447");
+            Oauth.token.Add(Config.guid, "xyhappd71ef9f4a64e4430afda6282a34ef0831476929099033");
             user.getDeptidsUserinfo("330108-S000001", "330108-S000001-Y0003-20150002", "", "true", "true", "true", "true");
         }
 

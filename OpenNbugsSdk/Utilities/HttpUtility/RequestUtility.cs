@@ -23,6 +23,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using ONS.Helpers;
+using System.Collections.Specialized;
 
 namespace ONS.Utilities.HttpUtility
 {
@@ -614,6 +615,39 @@ namespace ONS.Utilities.HttpUtility
         public static string AsUrlData(this string data)
         {
             return Uri.EscapeDataString(data);
+        }
+
+        public static string PostWebRequest(string postUrl, string paramData, Encoding dataEncode, NameValueCollection heads)
+        {
+            string ret = string.Empty;
+            try
+            {
+                byte[] byteArray = dataEncode.GetBytes(paramData); //转化
+                HttpWebRequest webReq = (HttpWebRequest)WebRequest.Create(new Uri(postUrl));
+                webReq.Method = "POST";
+                //webReq.ContentType = "application/x-www-form-urlencoded";
+                webReq.ContentType = "application/json";
+                if (heads != null)
+                {
+                    webReq.Headers.Add(heads);
+                }
+
+                webReq.ContentLength = byteArray.Length;
+                Stream newStream = webReq.GetRequestStream();
+                newStream.Write(byteArray, 0, byteArray.Length);//写入参数
+                newStream.Close();
+                HttpWebResponse response = (HttpWebResponse)webReq.GetResponse();
+                StreamReader sr = new StreamReader(response.GetResponseStream(), dataEncode);
+                ret = sr.ReadToEnd();
+                sr.Close();
+                response.Close();
+                newStream.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
         }
     }
 }
