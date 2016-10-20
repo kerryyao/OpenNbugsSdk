@@ -4,12 +4,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ONS.tests
 {
     [TestClass]
-    public class OauthTest
+    public class oauthTest
     {
-        public OauthTest()
+        public oauthTest()
         {
-            Config.ClientId = "cf4dc7df319242f69881a149aad65275";
-            Config.ClientSecret = "aaaaaaaaaaaaaaaaa";
+            Config.ClientId = "56dd1c3cec6545a9acaee0c2c9ca9d02";
+            Config.ClientSecret = "95bd18ccb7162bfe2dee544010cbe080A2E1184B26";
         }
 
         [TestMethod]
@@ -25,7 +25,7 @@ namespace ONS.tests
         public void TestGetTokenUrl()
         {
             var url = Helpers.OauthHelper.GetTokenUrl(Config.ClientId, Config.ClientSecret);
-            Assert.AreEqual("https://open.xiaoyuanhao.com/cgi-bin/oauth2/token?grant_type=client_credentials&client_id=cf4dc7df319242f69881a149aad65275&client_secret=aaaaaaaaaaaaaaaaa", url);
+            Assert.AreEqual("https://open.xiaoyuanhao.com/cgi-bin/oauth2/token?grant_type=client_credentials&client_id=cf4dc7df319242f69881a149aad65275&client_secret=47bb6580a852e94cd51cef436c1cc7a7BF88364F8C", url);
         }
 
         [TestMethod]
@@ -39,7 +39,7 @@ namespace ONS.tests
         [TestMethod]
         public void TestGetToken()
         {
-            Config.ClientSecret = "";  //测试时变更为实际值
+            Config.ClientSecret = "47bb6580a852e94cd51cef436c1cc7a7BF88364F8C";  //测试时变更为实际值
             //应用授权测试
             var ret = Oauth.GetToken();
             Assert.IsNotNull(ret);
@@ -49,8 +49,8 @@ namespace ONS.tests
         [TestMethod]
         public void TestGetAccessToken()
         {
-            Config.ClientSecret = "d4c253e584f54bf378b55618d7f05b998FD13D0D6C";
-            string code = "eeede5a5c9a0f73f376a5735b14cae5c"; //测试时先手动获取CODE，写到这里，然后进行下面的各项测试
+            Config.ClientSecret = "95bd18ccb7162bfe2dee544010cbe080A2E1184B26";
+            string code = "da0e8e83d60648bbad11a39b76d503d61475909593978"; //测试时先手动获取CODE，写到这里，然后进行下面的各项测试
             var ret = Oauth.GetTokenWithUserinfo(code);
             Assert.IsNotNull(ret);
         }

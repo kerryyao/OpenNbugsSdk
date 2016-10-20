@@ -22,10 +22,10 @@ namespace ONS.APIs
         /// <param name="with_card"></param>
         /// <param name="with_roledetail"></param>
         /// <returns></returns>
-        public Userinfo getUserInfo(string orgid, string userid, string oauth_token, bool with_contacts, bool with_orgext, bool with_card, bool with_roledetail)
+        public Userinfo getUserInfo(string orgid, string userid, bool with_contacts, bool with_orgext, bool with_card, bool with_roledetail)
         {
             Userinfo result = null;
-            string url = Config.URL_OPENBUGS + "/user/get?orgid=" + orgid + "&userid=" + userid + "&oauth_token=" + oauth_token;
+            string url = Config.URL_OPENBUGS + "/user/get?orgid=" + orgid + "&userid=" + userid + "&oauth_token=" + Oauth.token[Config.guid];
             var temp = Get.GetJson<RetResult<Userinfo>>(url);
             result = temp.r;
             return result;
@@ -57,10 +57,10 @@ namespace ONS.APIs
         /// <param name="with_card">	结果是否需要包含卡号信息，默认：false</param>
         /// <param name="with_roledetail">	结果是否需要包含角色详细信息，默认：false</param>
         /// <returns></returns>
-        public List<Userinfo> getUserInfoList(string orgid, string userids, string oauth_token, bool with_contacts, bool with_orgext, bool with_card, bool with_roledetail)
+        public List<Userinfo> getUserInfoList(string orgid, string userids, bool with_contacts, bool with_orgext, bool with_card, bool with_roledetail)
         {
             List<Userinfo> result = null;
-            string url = Config.URL_OPENBUGS + "user/list?orgid=" + orgid + "&userids=" + userids + "&oauth_token= " + Oauth.token[Config.guid] + "&with_orgext=" + with_orgext + "&with_card=" + with_card + "&with_roledetail=" + with_roledetail;
+            string url = Config.URL_OPENBUGS + "/user/list?orgid=" + orgid + "&userids=" + userids + "&oauth_token=" + Oauth.token[Config.guid] + "&with_orgext=" + with_orgext + "&with_card=" + with_card + "&with_roledetail=" + with_roledetail;
             var temp = Get.GetJson<RetResult<List<Userinfo>>>(url);
             return result;
         }
@@ -77,7 +77,7 @@ namespace ONS.APIs
         /// <param name="with_card">	结果是否需要包含卡号信息，默认：false</param>
         /// <param name="with_roledetail">	结果是否需要包含角色详细信息，默认：false</param>
         /// <returns></returns>
-        public List<Userinfo> getOrgUser(string orgid, string deptids, string roles, string oauth_token, string with_contacts, string with_orgext, string with_card, string with_roledetail)
+        public List<Userinfo> getOrgUser(string orgid, string deptids, string roles, string with_contacts, string with_orgext, string with_card, string with_roledetail)
         {
             List<Userinfo> result = null;
             string url = Config.URL_OPENBUGS + "/orguser/list?orgid=" + orgid + "&deptids=" + deptids + "&oauth_token=" + Oauth.token[Config.guid] + "&with_contacts=" + with_contacts + "&with_orgext=" + with_orgext + "&with_card=" + with_card + "&with_roledetail=" + with_roledetail;
@@ -100,7 +100,7 @@ namespace ONS.APIs
         /// <param name="with_card">	结果是否需要包含卡号信息，默认：false</param>
         /// <param name="with_roledetail">	结果是否需要包含角色详细信息，默认：false</param>
         /// <returns></returns>
-        public List<Userinfo> getOrgUserByPage(string orgid, string deptids, string roles, string page, string pagesize, string oauth_token, string with_contacts, string with_orgext, string with_card, string with_roledetail)
+        public List<Userinfo> getOrgUserByPage(string orgid, string deptids, string roles, string page, string pagesize, string with_contacts, string with_orgext, string with_card, string with_roledetail)
         {
             List<Userinfo> result = null;
             string url = Config.URL_OPENBUGS + "/orguser/page?orgid=" + orgid + "&deptids=" + deptids + "&roles=" + roles + "&page=" + page + "&pagesize=" + pagesize + "&oauth_token=" + Oauth.token[Config.guid] + "&with_contacts=" + with_contacts + "&with_orgext=" + with_orgext + "&with_card=" + with_card + "&with_roledetail=" + with_roledetail;
@@ -121,7 +121,7 @@ namespace ONS.APIs
         /// <param name="with_card">	结果是否需要包含卡号信息，默认：false</param>
         /// <param name="with_roledetail">	结果是否需要包含角色详细信息，默认：false</param>
         /// <returns></returns>
-        public List<UserRole> getDeptidsUserinfo(string orgid, string deptids, string roles, string oauth_token, string with_contacts, string with_orgext, string with_card, string with_roledetail)
+        public List<UserRole> getDeptidsUserinfo(string orgid, string deptids, string roles, string with_contacts, string with_orgext, string with_card, string with_roledetail)
         {
             List<UserRole> result = null;
             string url = Config.URL_OPENBUGS + "/orguser/map?orgid=" + orgid + "&deptids=" + deptids + "&roles=" + roles + "&page=" + "&oauth_token=" + Oauth.token[Config.guid] + "&with_contacts=" + with_contacts + "&with_orgext=" + with_orgext + "&with_card=" + with_card + "&with_roledetail=" + with_roledetail;
@@ -143,10 +143,10 @@ namespace ONS.APIs
         /// <param name="with_card">	结果是否需要包含卡号信息，默认：false</param>
         /// <param name="with_roledetail">	结果是否需要包含角色详细信息，默认：false</param>
         /// <returns></returns>
-        public List<Userinfo> getUserinfobyOrg(string orgid, string usertype, string page, string pagesize, string oauth_token, string with_contacts, string with_orgext, string with_card, string with_roledetail)
+        public List<Userinfo> getUserinfobyOrg(string orgid, string usertype, string page, string pagesize, string with_contacts, string with_orgext, string with_card, string with_roledetail)
         {
             List<Userinfo> result = null;
-            if(!string.IsNullOrEmpty(usertype))
+            if (!string.IsNullOrEmpty(usertype))
             {
                 usertype = Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(usertype));
             }
